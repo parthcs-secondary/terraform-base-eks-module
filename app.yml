@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/test-repo-app/test-org-repo.git'
-    targetRevision: HEAD
+    targetRevision: brightedge
     path: .
   destination:
     server: 'https://kubernetes.default.svc'

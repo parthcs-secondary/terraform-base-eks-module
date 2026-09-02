@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/parthcs-secondary/terraform-base-eks-module.git
-    targetRevision: HEAD
+    targetRevision: brightedge
     path: argocd/apps
   destination:
     server: https://kubernetes.default.svc

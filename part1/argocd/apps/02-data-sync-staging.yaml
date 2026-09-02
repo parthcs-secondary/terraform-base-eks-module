@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/parthcs-secondary/terraform-base-eks-module.git
-    targetRevision: HEAD
+    targetRevision: brightedge
     path: helm/charts/data-sync
     helm:
       valueFiles:
