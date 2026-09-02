@@ -16,6 +16,10 @@ spec:
     helm:
       valuesObject:
         architecture: standalone
+        image:
+          registry: public.ecr.aws
+          repository: bitnami/redis
+          tag: "latest"
         auth:
           password: "mahesh@brightedge"
         master:
