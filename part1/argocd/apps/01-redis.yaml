@@ -15,6 +15,9 @@ spec:
     targetRevision: 20.*
     helm:
       valuesObject:
+        global:
+          security:
+            allowInsecureImages: true
         architecture: standalone
         image:
           registry: public.ecr.aws
