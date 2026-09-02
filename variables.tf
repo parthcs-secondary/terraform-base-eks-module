@@ -18,7 +18,7 @@ variable "hub_cluster_name" {
 
 variable "argocd_chart_version" {
   type        = string
-  default     = "10.4.2" # Standard argo-helm release version
+  default     = "10.4.2"
   description = "Version of the argo-cd Helm chart"
 }
 

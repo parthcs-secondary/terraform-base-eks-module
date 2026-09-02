@@ -12,3 +12,8 @@ output "intra_subnets" {
   value       = module.vpc.intra_subnets
   description = "List of intra subnet IDs (used by EKS control plane)"
 }
+
+output "public_subnets" {
+  description = "List of IDs of public subnets"
+  value       = module.vpc.public_subnets
+}

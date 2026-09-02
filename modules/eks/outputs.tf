@@ -17,3 +17,8 @@ output "oidc_provider_arn" {
   value       = module.eks.oidc_provider_arn
   description = "ARN of the OIDC Provider for IAM roles for service accounts"
 }
+
+output "cluster_primary_security_group_id" {
+  description = "Cluster security group that was created by Amazon EKS for the cluster"
+  value       = module.eks.cluster_primary_security_group_id
+}

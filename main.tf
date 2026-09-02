@@ -52,22 +52,22 @@ resource "helm_release" "argocd" {
 }
 
 # STEP 4: Register GitHub Repository via GitHub App
-resource "kubernetes_secret" "github_app_org_credentials" {
-  metadata {
-    name      = "org-github-app-creds"
-    namespace = "argocd"
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repo-creds" # Org-wide credential template
-    }
-  }
+# resource "kubernetes_secret" "github_app_org_credentials" {
+#   metadata {
+#     name      = "org-github-app-creds"
+#     namespace = "argocd"
+#     labels = {
+#       "argocd.argoproj.io/secret-type" = "repo-creds" # Org-wide credential template
+#     }
+#   }
 
-  data = {
-    type                    = "git"
-    url                     = var.github_org_url
-    githubAppID             = var.github_app_id
-    githubAppInstallationID = var.github_app_installation_id
-    githubAppPrivateKey     = var.github_app_private_key
-  }
+#   data = {
+#     type                    = "git"
+#     url                     = var.github_org_url
+#     githubAppID             = var.github_app_id
+#     githubAppInstallationID = var.github_app_installation_id
+#     githubAppPrivateKey     = var.github_app_private_key
+#   }
 
-  depends_on = [helm_release.argocd]
-}
+#   depends_on = [helm_release.argocd]
+# }
