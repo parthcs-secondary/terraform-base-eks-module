@@ -17,7 +17,10 @@ spec:
       valuesObject:
         architecture: standalone
         auth:
-          password: "prod-high-entropy-redis-password"
+          password: "mahesh@brightedge"
+        master:
+          persistence:
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: data-sync
