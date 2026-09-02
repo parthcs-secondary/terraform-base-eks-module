@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/parthcs-secondary/terraform-base-eks-module.git
     targetRevision: brightedge
-    path: argocd/apps
+    path: part1/argocd/apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
