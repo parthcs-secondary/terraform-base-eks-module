@@ -1,0 +1,14 @@
+output "vpc_id" {
+  value       = module.vpc.vpc_id
+  description = "The ID of the created VPC"
+}
+
+output "private_subnets" {
+  value       = module.vpc.private_subnets
+  description = "List of private subnet IDs"
+}
+
+output "intra_subnets" {
+  value       = module.vpc.intra_subnets
+  description = "List of intra subnet IDs (used by EKS control plane)"
+}
