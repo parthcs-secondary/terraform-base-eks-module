@@ -47,6 +47,9 @@ cluster:
           memory: 1536Mi
 
   security:
+    config:
+      adminCredentialsSecret:
+        name: opensearch-poc-admin-credentials
     tls:
       http:
         enabled: true
