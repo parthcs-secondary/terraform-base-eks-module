@@ -7,8 +7,6 @@ cluster:
     setVMMaxMapCount: true
   confMgmt:
     smartScaler: false
-  bootstrap:
-    storageClass: gp3
 
   dashboards:
     enable: true
@@ -27,12 +25,12 @@ cluster:
       enable: false
 
   nodePools:
-    - component: nodes
+    - component: masters
       replicas: 1
       diskSize: 10Gi
       jvm: -Xms512m -Xmx512m
       roles:
-        - cluster_manager
+        - master
         - data
         - ingest
       persistence:
