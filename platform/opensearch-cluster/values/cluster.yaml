@@ -18,17 +18,18 @@ cluster:
     resources:
       requests:
         cpu: 100m
-        memory: 512Mi
+        memory: 256Mi
       limits:
         cpu: 500m
-        memory: 1Gi
+        memory: 512Mi
     tls:
       enable: false
 
   nodePools:
     - component: nodes
-      replicas: 3
+      replicas: 1
       diskSize: 10Gi
+      jvm: -Xms512m -Xmx512m
       roles:
         - cluster_manager
         - data
@@ -40,11 +41,11 @@ cluster:
             - ReadWriteOnce
       resources:
         requests:
-          cpu: 500m
-          memory: 2Gi
+          cpu: 250m
+          memory: 1Gi
         limits:
           cpu: 1
-          memory: 2Gi
+          memory: 1536Mi
 
   security:
     tls:
