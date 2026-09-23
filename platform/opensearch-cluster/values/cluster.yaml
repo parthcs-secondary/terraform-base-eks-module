@@ -5,7 +5,8 @@ cluster:
     version: "3"
     serviceName: opensearch-poc
     setVMMaxMapCount: true
-
+  confMgmt:
+    smartScaler: false
   bootstrap:
     storageClass: gp3
 
