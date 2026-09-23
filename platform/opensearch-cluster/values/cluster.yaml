@@ -29,10 +29,9 @@ cluster:
       replicas: 1
       diskSize: 10Gi
       jvm: -Xms512m -Xmx512m
-      roles:
-        - master
-        - data
-        - ingest
+      roles: # The roles the nodes should have
+        - "cluster_manager"
+        - "data"
       persistence:
         pvc:
           storageClass: gp3
