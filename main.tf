@@ -25,7 +25,44 @@ module "hub_cluster" {
   desired_nodes      = 2
 }
 
-# 3. Deploy ArgoCD Control Plane onto Hub Cluster via Helm
+resource "kubernetes_storage_class_v1" "gp3" {
+  metadata {
+    name = "gp3"
+  }
+
+  storage_provisioner    = "ebs.csi.aws.com"
+  reclaim_policy         = "Delete"
+  volume_binding_mode    = "WaitForFirstConsumer"
+  allow_volume_expansion = true
+
+  parameters = {
+    type   = "gp3"
+    fsType = "ext4"
+  }
+
+  depends_on = [module.hub_cluster]
+}
+
+# 3. Deploy cert-manager for cluster webhook certificate management
+resource "helm_release" "cert_manager" {
+  name             = "cert-manager"
+  repository       = "oci://quay.io/jetstack/charts"
+  chart            = "cert-manager"
+  version          = var.cert_manager_chart_version
+  namespace        = "cert-manager"
+  create_namespace = true
+
+  depends_on = [module.hub_cluster]
+
+  values = [
+    <<-EOT
+    crds:
+      enabled: true
+    EOT
+  ]
+}
+
+# 4. Deploy ArgoCD Control Plane onto Hub Cluster via Helm
 resource "helm_release" "argocd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"

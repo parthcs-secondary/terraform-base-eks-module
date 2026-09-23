@@ -22,6 +22,12 @@ variable "argocd_chart_version" {
   description = "Version of the argo-cd Helm chart"
 }
 
+variable "cert_manager_chart_version" {
+  type        = string
+  default     = "v1.21.2"
+  description = "Version of the cert-manager Helm chart"
+}
+
 # variable "github_app_id" {
 #   type        = string
 #   description = "The App ID of your GitHub App"

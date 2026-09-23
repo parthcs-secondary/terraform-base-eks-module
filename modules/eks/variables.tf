@@ -16,18 +16,18 @@ variable "node_instance_type" {
 }
 
 variable "min_nodes" {
-  type        = number
-  default     = 1
+  type    = number
+  default = 1
 }
 
 variable "max_nodes" {
-  type        = number
-  default     = 3
+  type    = number
+  default = 3
 }
 
 variable "desired_nodes" {
-  type        = number
-  default     = 2
+  type    = number
+  default = 2
 }
 
 # Network Ingestion Inputs
