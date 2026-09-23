@@ -6,6 +6,9 @@ cluster:
     serviceName: opensearch-poc
     setVMMaxMapCount: true
 
+  bootstrap:
+    storageClass: gp3
+
   dashboards:
     enable: true
     replicas: 1
