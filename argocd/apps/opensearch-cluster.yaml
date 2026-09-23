@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opensearch-cluster
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://opensearch-project.github.io/opensearch-k8s-operator/
+      chart: opensearch-cluster
+      targetRevision: 3.3.0
+      helm:
+        valueFiles:
+          - $values/platform/opensearch-cluster/values/cluster.yaml
+    - repoURL: https://github.com/parthcs-secondary/terraform-base-eks-module.git
+      targetRevision: zaidyn
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: opensearch
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

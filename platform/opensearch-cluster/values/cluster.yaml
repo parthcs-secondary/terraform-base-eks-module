@@ -1,0 +1,54 @@
+cluster:
+  name: opensearch-poc
+
+  general:
+    version: "3"
+    serviceName: opensearch-poc
+    setVMMaxMapCount: true
+
+  dashboards:
+    enable: true
+    replicas: 1
+    version: "3"
+    service:
+      type: ClusterIP
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+    tls:
+      enable: false
+
+  nodePools:
+    - component: nodes
+      replicas: 3
+      diskSize: 10Gi
+      roles:
+        - cluster_manager
+        - data
+        - ingest
+      persistence:
+        pvc:
+          storageClass: gp3
+          accessModes:
+            - ReadWriteOnce
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2Gi
+        limits:
+          cpu: 1
+          memory: 2Gi
+
+  security:
+    tls:
+      http:
+        enabled: true
+        generate: true
+      transport:
+        enabled: true
+        generate: true
+        perNode: true
