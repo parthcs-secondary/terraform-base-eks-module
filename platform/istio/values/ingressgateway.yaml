@@ -1,2 +1,7 @@
 service:
   type: LoadBalancer
+
+autoscaling:
+  enabled: false
+
+replicaCount: 1
